@@ -16,12 +16,13 @@ const scopes = [
   "user-modify-playback-state",
 ];
 
-export const getTokenFromResponse = () => {
+export const getTokenFromUrl = () => {
   return window.location.hash
     .substring(1)
-    .split("&")
+    .split('&')
     .reduce((initial, item) => {
-      var parts = item.split("=");
+      // #accesstoken
+      let parts = item.split("=");
       initial[parts[0]] = decodeURIComponent(parts[1]);
 
       return initial;
